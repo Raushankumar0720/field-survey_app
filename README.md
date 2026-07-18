@@ -1,50 +1,90 @@
-# Welcome to your Expo app 👋
+# Field Survey Mobile Application 📋📱
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A modern, responsive, and offline-first React Native (Expo) mobile application designed for field researchers to collect survey data. The application features full local-storage caching, automatic sync mechanisms, custom themes, and advanced integrations with hardware APIs (GPS Location, Camera, Contacts, and Clipboard).
 
-## Get started
+---
 
-1. Install dependencies
+## 📸 Application Preview (Screenshots)
 
-   ```bash
-   npm install
-   ```
+Below are the actual interface screenshots taken from the application:
 
-2. Start the app
+### 1. Interactive Dashboard
+*Displays real-time collection metrics, recent survey submissions, and active network connectivity status.*
+<p align="center">
+  <img src="./assets/images/dashboard.png" width="350" alt="Dashboard Screen"/>
+</p>
 
-   ```bash
-   npx expo start
-   ```
+### 2. Survey Creation Form
+*A fully-dynamic form supporting structured input validation, location capture, photo attachments, and offline storage preparation.*
+<p align="center">
+  <img src="./assets/images/new_survey.png" width="350" alt="New Survey Form"/>
+</p>
 
-In the output, you'll find options to open the app in a
+### 3. Survey History & Sync Status
+*Lists all completed surveys stored on the device with real-time status indicators showing whether they are successfully synchronized or cached offline.*
+<p align="center">
+  <img src="./assets/images/history.png" width="350" alt="History and Sync Screen"/>
+</p>
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+### 4. User Profile & Preferences
+*Manage operator profiles, customize application colors, and configure system preferences.*
+<p align="center">
+  <img src="./assets/images/profile.png" width="350" alt="Profile Screen"/>
+</p>
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+---
 
-## Get a fresh project
+## 🛠️ Key Features
 
-When you're ready, run:
+* **Offline-First Storage:** Stores all surveys locally using `@react-native-async-storage/async-storage`. Works seamlessly in locations without network connectivity.
+* **Auto-Sync Network Manager:** Listens to network state transitions. Automatically pushes pending local survey data to the sync stream when connection goes online.
+* **Location & Geotagging:** Captures precise GPS coordinates (Latitude & Longitude) using `expo-location` to verify where surveys are conducted.
+* **Camera Integration:** Directly capture photos on-site using `expo-camera` to attach evidence/photos to survey cards.
+* **Contacts Integration:** Search and select target contacts using `expo-contacts` directly within the surveys.
+* **Clipboard & Sharing:** Allows copying survey metadata directly to the system clipboard and sharing survey summaries via system sharing intent.
+* **Aesthetic Theme Engine:** Supports Light and Dark modes matching system preferences or explicit overrides, built using modern glassmorphic card layouts.
 
+---
+
+## 🚀 Getting Started
+
+### 1. Prerequisites
+Ensure you have Node.js installed and Expo CLI environment ready.
+
+### 2. Install dependencies
 ```bash
-npm run reset-project
+npm install
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+### 3. Run Locally
+Run the Metro Bundler in development mode:
+```bash
+# To run on iOS Simulator
+npm run ios
 
-## Learn more
+# To run on Android Emulator/Device
+npm run android
 
-To learn more about developing your project with Expo, look at the following resources:
+# To run on Web Browser
+npm run web
+```
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+---
 
-## Join the community
+## 📦 How to Build the Android APK (No Play Store Required)
 
-Join our community of developers creating universal apps.
+To build an `.apk` file that you can install directly on any Android device:
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+1. Install EAS CLI:
+   ```bash
+   npm install -g eas-cli
+   ```
+2. Log in to Expo:
+   ```bash
+   eas login
+   ```
+3. Run the preview build command:
+   ```bash
+   eas build --platform android --profile preview
+   ```
+4. Once completed, download the `.apk` file from the generated Expo link or scan the QR code to install.
